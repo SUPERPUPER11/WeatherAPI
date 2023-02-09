@@ -23,8 +23,7 @@ namespace WeatherAPI
         public Sys sys { get; set; }
         public int timezone { get; set; }
         public int id { get; set; }
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        public string name { get; set; }
         public int cod { get; set; }
 
     }
