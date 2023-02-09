@@ -28,7 +28,7 @@ if (response.IsSuccessStatusCode)
 }
 else
 {
-    Console.WriteLine("(");
+    Console.WriteLine("Ошибка! Город не найден.");
 }
 
 if (responseDays.IsSuccessStatusCode)
@@ -36,14 +36,14 @@ if (responseDays.IsSuccessStatusCode)
     var resultDays = await responseDays.Content.ReadAsStringAsync();
     var modelDays = JsonConvert.DeserializeObject<WeatherDays>(resultDays);
     Console.WriteLine("---------------------------------------------------------------------------------------");
-    Console.WriteLine($"Прогноз погоды с {DateTime.Now.ToString("d")} до {DateTime.Now.AddDays(3).ToString("d")} включительно для города {modelDays.City.Name}:");
-    Console.WriteLine("--------------------------------------------------------------------------------------");
-    Console.WriteLine($"{"Дата и день недели",10} | {"Мин. и макс. температура",35} | {"Описание",25} |");
-    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[0].DtTxt),18} | мин.тем. {modelDays.List[0].Main.TempMin,5}°  макс. темп. {modelDays.List[0].Main.TempMax,5}° | {modelDays.List[0].Weather[0].Description,25} |");
-    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[8].DtTxt),18} | мин.тем. {modelDays.List[8].Main.TempMin,5}°  макс. темп. {modelDays.List[8].Main.TempMax,5}° | {modelDays.List[8].Weather[0].Description,25} |");
-    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[16].DtTxt),18} | мин.тем. {modelDays.List[16].Main.TempMin,5}°  макс. темп. {modelDays.List[16].Main.TempMax,5}° | {modelDays.List[16].Weather[0].Description,25} |"); 
-    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[24].DtTxt),18} | мин.тем. {modelDays.List[18].Main.TempMin,5}°  макс. темп. {modelDays.List[24].Main.TempMax,5}° | {modelDays.List[24].Weather[0].Description,25} |");
-    Console.WriteLine("--------------------------------------------------------------------------------------");
+    Console.WriteLine($"Прогноз погоды с {DateTime.Now.ToString("d")} до {DateTime.Now.AddDays(3).ToString("d")} для города {modelDays.City.Name}:");
+    Console.WriteLine("------------------------------------------------------------------------------------------");
+    Console.WriteLine($"{"Дата и день недели",22} | {"Мин. и макс. температура",35} | {"Описание",25} |");
+    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[0].DtTxt),22} | мин.тем. {modelDays.List[0].Main.TempMin,5}°  макс. темп. {modelDays.List[0].Main.TempMax,5}° | {modelDays.List[0].Weather[0].Description,25} |");
+    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[8].DtTxt),22} | мин.тем. {modelDays.List[8].Main.TempMin,5}°  макс. темп. {modelDays.List[8].Main.TempMax,5}° | {modelDays.List[8].Weather[0].Description,25} |");
+    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[16].DtTxt),22} | мин.тем. {modelDays.List[16].Main.TempMin,5}°  макс. темп. {modelDays.List[16].Main.TempMax,5}° | {modelDays.List[16].Weather[0].Description,25} |");
+    Console.WriteLine($"{WetherStrToDateToStr(modelDays.List[24].DtTxt),22} | мин.тем. {modelDays.List[18].Main.TempMin,5}°  макс. темп. {modelDays.List[24].Main.TempMax,5}° | {modelDays.List[24].Weather[0].Description,25} |");
+    Console.WriteLine("------------------------------------------------------------------------------------------");
     Console.ReadKey();
 }
 
