@@ -19,7 +19,7 @@ if (response.IsSuccessStatusCode)
 {
     var result = await response.Content.ReadAsStringAsync();
     var model = JsonConvert.DeserializeObject<WeatherModel>(result);
-    Console.WriteLine($"Погода на сегодня для города {model.name}:");
+    Console.WriteLine($"Погода на сегодня для города {model.Name}:");
     Console.WriteLine($"Текущая температура: {model.Main.Temp}°, {model.Weather[0].Description}");
     Console.WriteLine($"Ощущается как: {model.Main.FeelsLike}°");
     Console.WriteLine($"Скорость ветра: {model.Wind.Speed} м/с, {Cardinaldirections(model.Wind.Deg)}.");
